@@ -44,19 +44,19 @@ features_test = cv.transform(mess_test)
 
 # predict data
 def predict(message):
-    input_message = cv.transform(['Congratulations , you won a lottery']).toarray()
+    input_message = cv.transform([message]).toarray()
     result = model.predict(input_message)
-    return result
+    return result[0]
 
 
 st.header('SPAM DETECTION')
 
 input_mess= st.text_input('Enter Message Here')
 
+
 if st.button('Validate'):
     output = predict(input_mess)
-    st.markdown(output)
-
+    st.success(f"The message is: {output}")
 
 
 #MLmodel SPAM DETECTION
